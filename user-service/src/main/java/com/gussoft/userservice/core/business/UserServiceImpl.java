@@ -74,13 +74,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<Car> findAllCars(Long idUser) {
-        List<Car> cars = template.getForObject("http://localhost:8002/v1/cars/byuser/" + idUser, List.class);
+        List<Car> cars = template.getForObject("http://car-service/v1/cars/byuser/" + idUser, List.class);
         return cars;
     }
 
     @Override
     public List<Bike> findAllBikes(Long idUser) {
-        List<Bike> bikes = template.getForObject("http://localhost:8003/v1/bikes/byuser/" + idUser, List.class);
+        List<Bike> bikes = template.getForObject("http://bike-service/v1/bikes/byuser/" + idUser, List.class);
         return bikes;
     }
 
