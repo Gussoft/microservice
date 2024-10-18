@@ -104,15 +104,18 @@ public class UserServiceImpl implements UserService {
         }
         response.put("user", user);
         List<Car> cars = carClient.getCarsByUserId(idUser);
-        if (cars.isEmpty()) {
+        if (cars == null || cars.isEmpty()) {
             response.put("cars", "Car Not Found");
+        } else {
+            response.put("cars", cars);
         }
-        response.put("cars", cars);
+
         List<Bike> bikes = bikeClient.getBikesByUserId(idUser);
-        if (bikes.isEmpty()) {
+        if (bikes == null || bikes.isEmpty()) {
             response.put("bikes", "Bike Not Found");
+        } else {
+            response.put("bikes", bikes);
         }
-        response.put("bikes", bikes);
 
         return response;
     }
